@@ -1,22 +1,26 @@
 {
-    "name": "AI Compliance Agent (Python 3.11)",
-    "build": {
-        "dockerfile": "../Dockerfile"
-    },
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.linting.enabled": true,
-                "python.linting.pylintEnabled": true
-            },
-            "extensions": [
-                "ms-python.python",
-                "ms-python.vscode-pylance",
-                "ms-azuretools.vscode-docker"
-            ]
-        }
-    },
-    "forwardPorts": [8000],
-    "postCreateCommand": "pip install --user --upgrade pip && pip install -r requirements.txt"
+  "name": "AI Compliance Agent (Python 3.11)",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "forwardPorts": [8000],
+  "postCreateCommand": "pip install --user --upgrade pip && pip install -r requirements.txt && git config --global user.name 'NeuralBlau' && git config --global user.email 'alexander.rewitzer@example.com'"
 }

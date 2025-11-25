@@ -12,3 +12,6 @@ chromadb
 fastapi
 uvicorn
 pytest
+pytesseract
+pdf2image
+boto3

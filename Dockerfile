@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Installiere Tesseract, Git und andere notwendige Abhängigkeiten
 RUN apt-get update && apt-get install -y \
     tesseract-ocr \
+    tesseract-ocr-deu \
     libtesseract-dev \
     libleptonica-dev \
     poppler-utils \
