@@ -1,0 +1,12 @@
+# Ignoriere Umgebungsvariablen
+.env
+
+# Ignoriere die lokale ChromaDB (sie kann jederzeit neu aufgebaut werden)
+chroma_db/
+
+# Ignoriere Python-Artefakte
+__pycache__/
+*.pyc
+
+# Ignoriere virtuelle Umgebungen
+venv/

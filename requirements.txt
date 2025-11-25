@@ -1,0 +1,14 @@
+#requirements
+pandas
+numpy
+scikit-learn
+langchain
+pydantic
+openai
+python-dotenv
+tiktoken
+tesseract
+chromadb
+fastapi
+uvicorn
+pytest
