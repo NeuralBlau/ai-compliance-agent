@@ -3,6 +3,11 @@ pandas
 numpy
 scikit-learn
 langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-text-splitters
+langchain-classic
 pydantic
 openai
 python-dotenv
@@ -14,4 +19,5 @@ uvicorn
 pytest
 pytesseract
 pdf2image
-boto3
+boto3   
+sentence-transformers
