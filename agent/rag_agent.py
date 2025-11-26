@@ -1,6 +1,6 @@
 import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
@@ -82,10 +82,12 @@ class ComplianceAgent:
     def _build_index(self):
         """Lädt Textdateien, splittet sie und speichert sie in Chroma."""
         documents = []
+
         for filename in os.listdir(PROCESSED_DIR):
             if filename.endswith(".txt"):
                 loader = TextLoader(
-                    os.path.join(PROCESSED_DIR, filename), encoding="utf-8"
+                    os.path.join(PROCESSED_DIR, filename),
+                    encoding="utf-8",
                 )
                 documents.extend(loader.load())
 
@@ -94,6 +96,7 @@ class ComplianceAgent:
             chunk_overlap=200,
         )
         chunks = text_splitter.split_documents(documents)
+
         print(f"Dokumente geladen und in {len(chunks)} Chunks aufgeteilt.")
 
         self.db = Chroma.from_documents(
@@ -101,6 +104,7 @@ class ComplianceAgent:
             self.embedding_function,
             persist_directory=DB_PATH,
         )
+
         self.db.persist()
         print("Indexing abgeschlossen.")
 
@@ -124,15 +128,12 @@ if __name__ == "__main__":
         agent = ComplianceAgent()
         agent.create_or_load_index(force_rebuild=False)
 
-        test_query = (
-            "Was sagt die MIT lizenz?"
-        )
+        test_query = "Was sagt die MIT lizenz?"
         response = agent.query(test_query)
 
         print("\n--- RAG ANTWORT ---")
         print(f"Frage: {test_query}")
         print(f"Antwort: {response}")
-
     except EnvironmentError as e:
         print(f"Fehler: {e}. Bitte prüfe .env und OPENAI_API_KEY.")
     except Exception as e:
